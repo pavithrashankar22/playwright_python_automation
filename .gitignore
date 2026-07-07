@@ -4,5 +4,6 @@ __pycache__/
 .pytest_cache/
 test-results/
 playwright-report/
+reports/
 .env
 .DS_Store
