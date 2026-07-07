@@ -4,6 +4,8 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 
 
+@pytest.mark.smoke
+@pytest.mark.regression
 def test_valid_login(page):
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
@@ -15,6 +17,8 @@ def test_valid_login(page):
     expect(inventory_page.get_shopping_cart_icon()).to_be_visible()
 
 
+@pytest.mark.negative
+@pytest.mark.regression
 @pytest.mark.parametrize(
     "username,password,expected_error",
     [
