@@ -2,6 +2,7 @@ import pytest
 from playwright.sync_api import expect
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
+from test_data.users import STANDARD_USER
 
 
 @pytest.mark.smoke
@@ -12,7 +13,7 @@ def test_add_backpack_to_cart(page):
     inventory_page = InventoryPage(page)
 
     login_page.navigate()
-    login_page.login("standard_user", "secret_sauce")
+    login_page.login(STANDARD_USER["username"], STANDARD_USER["password"])
 
     inventory_page.add_backpack_to_cart()
 

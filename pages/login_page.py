@@ -1,3 +1,7 @@
+
+from utils.config import BASE_URL
+
+
 class LoginPage:
     def __init__(self, page):
         self.page = page
@@ -7,7 +11,7 @@ class LoginPage:
         self.error_message = page.locator("[data-test='error']")
 
     def navigate(self):
-        self.page.goto("https://www.saucedemo.com/")
+        self.page.goto(BASE_URL)
 
     def login(self, username, password):
         self.username_input.fill(username)
