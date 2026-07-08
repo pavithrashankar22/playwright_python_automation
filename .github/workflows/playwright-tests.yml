@@ -38,3 +38,11 @@ jobs:
         with:
           name: regression-test-report
           path: reports/regression-report.html
+      
+      - name: Upload Playwright failure artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-artifacts
+          path: test-results/
+          if-no-files-found: ignore        
