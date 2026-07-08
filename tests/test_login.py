@@ -1,16 +1,11 @@
 import pytest
 from playwright.sync_api import expect
-from pages.login_page import LoginPage
-from pages.inventory_page import InventoryPage
 from test_data.users import STANDARD_USER, INVALID_USER, LOCKED_OUT_USER
 
 
 @pytest.mark.smoke
 @pytest.mark.regression
-def test_valid_login(page):
-    login_page = LoginPage(page)
-    inventory_page = InventoryPage(page)
-
+def test_valid_login(login_page, inventory_page):
     login_page.navigate()
     login_page.login(STANDARD_USER["username"], STANDARD_USER["password"])
 
@@ -27,9 +22,7 @@ def test_valid_login(page):
         LOCKED_OUT_USER,
     ],
 )
-def test_login_error_scenarios(page, user_data):
-    login_page = LoginPage(page)
-
+def test_login_error_scenarios(login_page, user_data):
     login_page.navigate()
     login_page.login(user_data["username"], user_data["password"])
 
